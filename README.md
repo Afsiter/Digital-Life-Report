@@ -6,7 +6,13 @@
 
 ## 📖 简介 (Introduction)
 
-Digital Life Report 是一个轻量级的 Python 工具，它通过扫描 Windows 系统底层的事件日志（System & Application Logs），挖掘你过去一年的电脑使用习惯。
+Digital Life Report 是一个轻量级的 Python 工具集，旨在通过数据挖掘你的数字足迹。目前包含两个独立模块：
+1.  **System Report**: 挖掘 Windows 系统日志，分析你的电脑使用习惯。
+2.  **Lens Report**: (New!) 扫描照片 EXIF 数据，生成你的年度摄影风格画像。
+
+所有数据处理均在**本地运行**，无需上传，安全隐私。
+
+## 模块一：🖥️ System Report (电脑使用报告)
 
 ### ✨ 效果预览 (Preview)
 ![preview.png](./figure/preview.png)
@@ -30,53 +36,15 @@ Digital Life Report 是一个轻量级的 Python 工具，它通过扫描 Window
 #### 🤖 铁人记录
 计算你单次最长连续开机时间。
 
-### 🔒 隐私安全
-所有数据处理完全在本地运行，不上传任何服务器。
+## 模块二：📸 Lens Report (摄影人生报告)
 
-## 🛠️ 环境要求
+通过解析本地照片文件夹的 EXIF 元数据，生成属于摄影师的年度总结。
 
-操作系统: `Windows 10 / Windows 11` (依赖 `PowerShell` `Get-WinEvent` 指令)
-
-Python: `Python 3.6+` (如果直接运行源码)
-
-权限: **管理员权限 (Administrator)** (推荐，否则可能无法读取完整的系统日志)
-
-## 🚀 使用指南 (Usage)
-
-### 方式一：直接运行 exe 文件
-仓库中已提供打包好的exe文件`digital_life.exe`，若不信任该文件可根据python脚本自行打包。
-
-### 方式二：直接运行 python 脚本
-
-克隆或下载本项目，确保 `digital_life.py` 在你的文件夹中。
-
-**以管理员身份打开终端**（`CMD` 或 `PowerShell`）。（普通用户权限可能只能读取部分数据）
-
-运行脚本：
-```
-python digital_life.py
-```
-
-输入你想查询的年份（例如 2025），按回车。
-
-脚本将在当前目录生成 `my_digital_life_2025.html` 并自动在浏览器中打开。
-
-
-## 🔍 原理解析 (How it works)
-
-脚本底层调用 Windows PowerShell 执行以下查询：
-
-Event ID 6005: EventLog 服务启动（视为开机）
-
-Event ID 6006: EventLog 服务停止（视为关机）
-
-Event ID 41: Kernel-Power（异常关机/断电）
-
-Event ID 1001: BugCheck（蓝屏死机）
-
-Event ID 1033: MsiInstaller（软件安装）
-
-通过 Python 对这些时间戳进行清洗、配对和统计，最终嵌入 ECharts 生成可视化 HTML。
+### ✨ 主要功能
+*   **🔭 焦段偏好分析**：你是“广角狂魔”还是“空气切割机”？(无数据默认14mm处理)。
+*   **📷 器材党统计**：统计你使用了多少台不同的相机以及主力生产力工具。
+*   **🥯 参数习惯**：分析你的光圈使用习惯（虚化大师 vs 小光圈战士）及 ISO/快门分布。
+*   **🌃 作息捕捉**：根据拍摄时间判断你是“光影捕手”还是“夜之城行者”。
 
 ## ⚠️ 免责声明 (Disclaimer)
 

@@ -8,7 +8,7 @@
 
 Digital Life Report 是一个轻量级的 Python 工具集，旨在通过数据挖掘你的数字足迹。目前包含两个独立模块：
 1.  **System Report**: 挖掘 Windows 系统日志，分析你的电脑使用习惯。
-2.  **Lens Report**: (New!) 扫描照片 EXIF 数据，生成你的年度摄影风格画像。
+2.  **Lens Report**: (New!) 扫描照片 EXIF 数据，生成你的年度摄影风格画像。(目前只支持jpg格式)
 
 所有数据处理均在**本地运行**，无需上传，安全隐私。
 
